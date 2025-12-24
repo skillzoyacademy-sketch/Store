@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم الشيف | أطيب المأكولات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* الأساسيات */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #c62828;
+            --primary-dark: #8e0000;
+            --secondary: #ff9800;
+            --light: #f5f5f5;
+            --dark: #212121;
+            --gray: #757575;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* الشريط العلوي */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-left: 10px;
+            font-size: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-right: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            right: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* الهيرو */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-right: auto;
+            margin-left: auto;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .hero-btns .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+        
+        .hero-btns .btn-secondary:hover {
+            background: white;
+            color: var(--dark);
+        }
+        
+        /* قسم المميزات */
+        .features {
+            background-color: white;
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* قسم القائمة */
+        .menu-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-item-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+        
+        .menu-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .menu-item-category {
+            display: inline-block;
+            background: #f0f0f0;
+            color: var(--gray);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        /* قسم الطهاة */
+        .chefs {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+        
+        .chefs .section-title h2 {
+            color: white;
+        }
+        
+        .chefs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .chef-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            padding: 30px 20px;
+            transition: var(--transition);
+        }
+        
+        .chef-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .chef-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+        
+        .chef-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .chef-card p {
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+        
+        .chef-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .chef-social a {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .chef-social a:hover {
+            color: var(--secondary);
+        }
+        
+        /* قسم الحجوزات */
+        .reservation {
+            background-color: white;
+        }
+        
+        .reservation-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .reservation-form {
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* الفوتر */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            color: white;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+            bottom: -10px;
+            right: 0;
+        }
+        
+        .footer-col p {
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-right: 5px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #bbb;
+        }
+        
+        .contact-info i {
+            margin-left: 10px;
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* القائمة المتنقلة */
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: 0.5s;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-utensils"></i>
+                    مطعم الشيف
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#menu">قائمة الطعام</a></li>
+                    <li><a href="#chefs">طهاتنا</a></li>
+                    <li><a href="#reservation">الحجوزات</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- الهيرو -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>أطيب المأكولات بلمسة الشيف</h1>
+                <p>نقدم لكم أفضل الأطباق العالمية والمحلية بإعداد احترافي وجودة عالية. نستخدم أفضل المكونات الطازجة لنضمن لكم تجربة طعام لا تنسى.</p>
+                <div class="hero-btns">
+                    <a href="#menu" class="btn">تصفح القائمة</a>
+                    <a href="#reservation" class="btn btn-secondary">احجز طاولة</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المميزات -->
+    <section class="features" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>لماذا تختار مطعمنا؟</h2>
+                <p>نحن نتميز بتقديم أفضل خدمة لعملائنا الكرام</p>
+            </div>
+            
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>مكونات طازجة</h3>
+                    <p>نستخدم فقط المكونات الطازجة والمحلية ذات الجودة العالية في جميع أطباقنا.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cheese"></i>
+                    </div>
+                    <h3>وصفات فريدة</h3>
+                    <p>أطباقنا مستوحاة من وصفات عائلية أصيلة مع لمسات عصرية مبتكرة.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>شهادات تقدير</h3>
+                    <p>حاصلون على العديد من الجوائز والشهادات في مجال المطاعم والضيافة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- القائمة -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>قائمة الطعام</h2>
+                <p>استمتع بأشهى المأكولات من مطبخنا</p>
+            </div>
+            
+            <div class="menu-filter">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="appetizers">المقبلات</button>
+                <button class="filter-btn" data-filter="main">الأطباق الرئيسية</button>
+                <button class="filter-btn" data-filter="desserts">الحلويات</button>
+                <button class="filter-btn" data-filter="drinks">المشروبات</button>
+            </div>
+            
+            <div class="menu-container">
+                <!-- سيتم ملؤها بواسطة JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- الطهاة -->
+    <section class="chefs" id="chefs">
+        <div class="container">
+            <div class="section-title">
+                <h2>طهاتنا المميزون</h2>
+                <p>يعمل لدينا أفضل الطهاة ذوي الخبرة الواسعة</p>
+            </div>
+            
+            <div class="chefs-container">
+                <div class="chef-card">
+                    <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="الشيف أحمد" class="chef-img">
+                    <h3>الشيف أحمد</h3>
+                    <p>شيف رئيسي - خبرة 15 سنة</p>
+                    <p>متخصص في المأكولات العربية والشرق أوسطية.</p>
+                    <div class="chef-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="chef-card">
+                    <img src="https://images.unsplash.com/photo-1565098772267-60af42b81ef2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="الشيف سارة" class="chef-img">
+                    <h3>الشيف سارة</h3>
+                    <p>شيف حلويات - خبرة 10 سنوات</p>
+                    <p>متخصصة في الحلويات الشرقية والغربية بأنواعها.</p>
+                    <div class="chef-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="chef-card">
+                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="الشيف محمد" class="chef-img">
+                    <h3>الشيف محمد</h3>
+                    <p>شيف مشاوي - خبرة 12 سنة</p>
+                    <p>متخصص في المأكولات البحرية والمشاوي بأنواعها.</p>
+                    <div class="chef-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الحجوزات -->
+    <section class="reservation" id="reservation">
+        <div class="container">
+            <div class="section-title">
+                <h2>احجز طاولتك</h2>
+                <p>احجز الآن لتضمن مكانك في أجواء مطعمنا الرائعة</p>
+            </div>
+            
+            <div class="reservation-container">
+                <div>
+                    <h3>معلومات الحجز</h3>
+                    <p>نحن نعمل من الساعة 12 ظهراً حتى 12 منتصف الليل، طوال أيام الأسبوع.</p>
+                    <p>للاستفسارات والحجوزات الجماعية يمكنكم الاتصال على: <strong>+966 123 456 789</strong></p>
+                    <p>ننصح بالحجز المسبق خاصة في عطلات نهاية الأسبوع والأعياد.</p>
+                </div>
+                
+                <form class="reservation-form" id="reservationForm">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">التاريخ</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time">الوقت</label>
+                        <input type="time" id="time" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">عدد الأشخاص</label>
+                        <select id="guests" class="form-control" required>
+                            <option value="1">1 شخص</option>
+                            <option value="2">2 أشخاص</option>
+                            <option value="3">3 أشخاص</option>
+                            <option value="4">4 أشخاص</option>
+                            <option value="5">5 أشخاص</option>
+                            <option value="6+">6+ أشخاص</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">تأكيد الحجز</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>مطعم الشيف</h3>
+                    <p>مطعمنا يقدم أشهى المأكولات العربية والعالمية بأجواء عائلية رائعة وخدمة مميزة. نحرص على رضاكم وتجربتكم المميزة.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#menu">قائمة الطعام</a></li>
+                        <li><a href="#chefs">طهاتنا</a></li>
+                        <li><a href="#reservation">الحجوزات</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>ساعات العمل</h3>
+                    <ul class="footer-links">
+                        <li>السبت - الخميس: 12:00 ظهراً - 12:00 منتصف الليل</li>
+                        <li>الجمعة: 1:00 ظهراً - 1:00 منتصف الليل</li>
+                        <li>العطلات الرسمية: 12:00 ظهراً - 2:00 صباحاً</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>اتصل بنا</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> شارع الملك فهد، الرياض، السعودية</li>
+                        <li><i class="fas fa-phone"></i> +966 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> info@chef-restaurant.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 مطعم الشيف</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // بيانات قائمة الطعام
+        const menuItems = [
+            {
+                id: 1,
+                name: "حمص بالطحينة",
+                description: "حمص مع طحينة وزيت زيتون وتوابل خاصة",
+                price: "15 ريال",
+                category: "appetizers",
+                image: "https://images.unsplash.com/photo-1525648199074-cee30ba54a4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 2,
+                name: "تبولة",
+                description: "سلطة تبولة طازجة مع البقدونس والبرغل",
+                price: "18 ريال",
+                category: "appetizers",
+                image: "https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 3,
+                name: "كبة مقلية",
+                description: "كبة محشية باللحم والصنوبر ومقلية بالقلي العميق",
+                price: "35 ريال",
+                category: "appetizers",
+                image: "https://images.unsplash.com/photo-1608039829572-3fd13b9d9c42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 4,
+                name: "مندي لحم",
+                description: "لحم ضأن مطهو على البخار مع الأرز البسمتي والتوابل",
+                price: "75 ريال",
+                category: "main",
+                image: "https://images.unsplash.com/photo-1605296830714-7c02e14957ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 5,
+                name: "كبسة دجاج",
+                description: "أرز كبسة مع دجاج وتوابل خاصة ومكسرات",
+                price: "65 ريال",
+                category: "main",
+                image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 6,
+                name: "سمك مشوي",
+                description: "سمك ناجل طازج مشوي على الفحم مع صلصة ليمون",
+                price: "85 ريال",
+                category: "main",
+                image: "https://images.unsplash.com/photo-1606472976755-8949d6d2b0f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 7,
+                name: "كنافة بالنوتيلا",
+                description: "كنافة محشية بالنوتيلا ومغطاة بالفستق الحلبي",
+                price: "30 ريال",
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+            },
+            {
+                id: 8,
+                name: "أم علي",
+                description: "حلى أم علي التقليدي مع القشطة والمكسرات",
+                price: "25 ريال",
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80"
+            },
+            {
+                id: 9,
+                name: "عصير فراولة طازج",
+                description: "عصير فراولة طازج بدون إضافات صناعية",
+                price: "18 ريال",
+                category: "drinks",
+                image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+            },
+            {
+                id: 10,
+                name: "قهوة عربية",
+                description: "قهوة عربية أصيلة مع هيل",
+                price: "12 ريال",
+                category: "drinks",
+                image: "https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            }
+        ];
+
+        // DOM جاهز
+        document.addEventListener('DOMContentLoaded', function() {
+            // القائمة المتنقلة
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // إغلاق القائمة عند النقر على رابط
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // تحميل عناصر القائمة
+            const menuContainer = document.querySelector('.menu-container');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            function loadMenuItems(filter = 'all') {
+                menuContainer.innerHTML = '';
+                
+                const filteredItems = filter === 'all' 
+                    ? menuItems 
+                    : menuItems.filter(item => item.category === filter);
+                
+                filteredItems.forEach(item => {
+                    const menuItemElement = document.createElement('div');
+                    menuItemElement.className = 'menu-item';
+                    menuItemElement.setAttribute('data-category', item.category);
+                    
+                    menuItemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="menu-item-img">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">${item.name}</h3>
+                                <span class="menu-item-price">${item.price}</span>
+                            </div>
+                            <span class="menu-item-category">${getCategoryName(item.category)}</span>
+                            <p>${item.description}</p>
+                        </div>
+                    `;
+                    
+                    menuContainer.appendChild(menuItemElement);
+                });
+            }
+            
+            // أسماء الفئات
+            function getCategoryName(category) {
+                const categories = {
+                    'appetizers': 'مقبلات',
+                    'main': 'أطباق رئيسية',
+                    'desserts': 'حلويات',
+                    'drinks': 'مشروبات'
+                };
+                return categories[category] || category;
+            }
+            
+            // تصفية القائمة
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // إزالة النشط من جميع الأزرار
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // إضافة النشط للزر المضغوط
+                    this.classList.add('active');
+                    
+                    // تحميل العناصر المفلترة
+                    const filter = this.getAttribute('data-filter');
+                    loadMenuItems(filter);
+                });
+            });
+            
+            // تحميل جميع العناصر افتراضيًا
+            loadMenuItems();
+            
+            // نموذج الحجز
+            const reservationForm = document.getElementById('reservationForm');
+            reservationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const date = document.getElementById('date').value;
+                
+                if (name && date) {
+                    alert(`شكراً ${name}! تم استلام حجزك بتاريخ ${date}. سنتواصل معك قريباً للتأكيد.`);
+                    reservationForm.reset();
+                    
+                    // تعيين الحد الأدنى للتاريخ على اليوم الحالي
+                    const today = new Date().toISOString().split('T')[0];
+                    document.getElementById('date').min = today;
+                }
+            });
+            
+            // تعيين الحد الأدنى للتاريخ على اليوم الحالي
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').min = today;
+            
+            // تأثير التمرير السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
